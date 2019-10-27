@@ -14,7 +14,7 @@
     </parent>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
        <docker.image.prefix>springdocker</docker.image.prefix>
     </properties>
 
@@ -44,7 +44,6 @@
             <version>1.4.9</version>
             <configuration>
                 <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                <tag>v2</tag>
             </configuration>
         </plugin>
         <plugin>
