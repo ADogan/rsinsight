@@ -16,7 +16,11 @@ public class CaseRequest {
     List<SearchRequest.JudgmentMetadata> judgements;
 
     public void setInputs(SearchParameters searchParams) {
-        this.searchParams = searchParams;
+        if (searchParams == null) {
+            this.searchParams = new SearchParameters();
+        } else {
+            this.searchParams = searchParams;
+        }
     }
 
     public void process() throws ParserConfigurationException, SAXException, IOException {
@@ -32,7 +36,8 @@ public class CaseRequest {
 
     private SearchRequest prepareSearchRequest() {
         SearchRequest.Builder searchReqBuilder = new SearchRequest.Builder();
-        searchReqBuilder.max(searchParams.getMax());
+        Integer maxResult = this.searchParams.getMax();
+        searchReqBuilder.max(maxResult);
         return searchReqBuilder.build();
     }
 
